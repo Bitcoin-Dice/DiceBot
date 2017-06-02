@@ -24,18 +24,18 @@ namespace DiceBot
         public provablyio(cDiceBot Parent)
         {
             _PasswordText = "API Key: ";
-            Name = "ProvablyIO";
+            Name = "CoinPro.fit";
             AutoWithdraw = false;
             Tip = false;
             TipUsingName = true;
-            this.SiteURL = "https://provably.io/";
+            this.SiteURL = "https://CoinPro.fit/";
             this.register = false;
             this.NonceBased = false;
             this.maxRoll = 99;
             this.ChangeSeed = false;
             this.AutoLogin = true;
             this.AutoInvest = false;
-            this.BetURL = "https://provably.io/";
+            this.BetURL = "https://CoinPro.fit/";
             this.edge = 1;
             this.Parent = Parent;
             
@@ -142,18 +142,18 @@ namespace DiceBot
         public override void Login(string Username, string Password, string twofa)
         {
             ClientHandlr = new HttpClientHandler { UseCookies = true, AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip, Proxy = this.Prox, UseProxy = Prox != null };
-            Client = new HttpClient(ClientHandlr) { BaseAddress = new Uri("https://provably.io/api/") };
+            Client = new HttpClient(ClientHandlr) { BaseAddress = new Uri("https://CoinPro.fit/api/") };
             Client.DefaultRequestHeaders.AcceptEncoding.Add(new System.Net.Http.Headers.StringWithQualityHeaderValue("gzip"));
             Client.DefaultRequestHeaders.AcceptEncoding.Add(new System.Net.Http.Headers.StringWithQualityHeaderValue("deflate"));
             Client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0");
-            Client.DefaultRequestHeaders.Add("Host", "provably.io");
-            Client.DefaultRequestHeaders.Add("Origin", "https://provably.io/");
-            Client.DefaultRequestHeaders.Add("Referer", "https://provably.io/");
+            Client.DefaultRequestHeaders.Add("Host", "CoinPro.fit");
+            Client.DefaultRequestHeaders.Add("Origin", "https://CoinPro.fit/");
+            Client.DefaultRequestHeaders.Add("Referer", "https://CoinPro.fit/");
 
             try
             {
                 //ClientHandlr.CookieContainer.Add(new Cookie("socket", Password,"/","provably.io"));
-                ClientHandlr.CookieContainer.Add(new Cookie("token", Password, "/", "provably.io"));
+                ClientHandlr.CookieContainer.Add(new Cookie("token", Password, "/", "CoinPro.fit"));
                 //string page = Client.GetStringAsync()
                 string Stats = Client.GetStringAsync("userstats").Result;
                 PIOStats tmpstats = json.JsonDeserialize<PIOStats>(Stats);
